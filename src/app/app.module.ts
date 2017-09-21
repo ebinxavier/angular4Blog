@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
@@ -10,12 +10,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'about',      component: AboutComponent },
-  { path: 'gallery',      component: GalleryComponent },
-  { path: '',
+  { path: 'about', component: AboutComponent },
+  { path: 'gallery', component: GalleryComponent },
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     ImageSliderComponent,
     HomeComponent,
     AboutComponent,
-    GalleryComponent
+    GalleryComponent,
+    FooterComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -38,17 +41,15 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    BrowserAnimationsModule,
-    MdButtonModule, 
-    MdCheckboxModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 
 
-export class AppModule { 
+export class AppModule {
 
 
-  
+
 }
