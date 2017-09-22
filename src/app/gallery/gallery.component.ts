@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class GalleryComponent implements OnInit {
 
   constructor() { }
- public data='gallery';
+ public parentData='gallery';
   ngOnInit() {
   }
 
