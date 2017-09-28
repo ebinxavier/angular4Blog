@@ -20,8 +20,11 @@
 
 .hoverClass{
    text-decoration-line: none;
-   color: sandybrown;
+   color: black;
+   font-weight: bold;
+   font-size: 10px;
+   font-family: malayalam;
    }
 .hoverClass :hover{
-  color:#ddd;
+  color: red;
 }

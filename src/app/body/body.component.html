@@ -20,56 +20,20 @@
 <h2>Latest Topics</h2>
           <div class="row">
       
-      <article class="col-md-6 col-sm-6 card" style="padding: 25px;">
-  <a href="/blog/2016/10/19/Overview-of-JavaScript-ES6-features-a-k-a-ECMAScript-6-and-ES2015/" class="hoverClass">
-    <div style="text-align: center;margin-bottom: 20px;">    
-      <img src="assets/icons/1.jpg" width="150" height="150">
-    </div>
-      <section class="p-a-1">
-        <h3>Android was intended to be very customizable. And we welcome innovations.</h3>
-      </section>
-    
-  </a>
-</article>
+      <article *ngFor="let item of latestNews" class="col-md-6 col-sm-6 card" style="padding: 25px;">
+        <a href="/blog/2016/10/19/Overview-of-JavaScript-ES6-features-a-k-a-ECMAScript-6-and-ES2015/" class="hoverClass">
+          
+                <div class="col-sm-12" style="margin-bottom: 20px;">    
+                  <img src="assets/icons/1.jpg" style="width: 150px;height: 100px;">
+                </div>
+                <section>
+                  <h6>{{item.title}}</h6>
+                </section>
+          
+        </a>
+      </article>
 
       
-      <article class="col-md-6 col-sm-6 card" style="padding: 25px;">
-  <a href="/blog/2016/10/01/Angular-2-Tutorial-Create-a-CRUD-App-with-Angular-CLI-and-TypeScript/"  class="hoverClass">
-    <div style="text-align: center;margin-bottom: 20px;">
-      <img src="assets/icons/2.png" width="150" height="150">
-    </div>
-      <section class="p-a-1">
-        <h3>I'm a Macintosh nut. I got my PowerBook, so if I'm not writing jokes, I'm working on that.</h3>
-      </section>
-    
-  </a>
-</article>
-
-      
-      <article class="col-md-6 col-sm-6 card" style="padding: 25px;">
-  <a href="/blog/2016/08/24/Building-a-Node-js-static-file-server-files-over-HTTP-using-ES6/"  class="hoverClass">
-    <div style="text-align: center;margin-bottom: 20px;">    
-      <img src="assets/icons/3.png" width="150" height="150">
-    </div>
-      <section class="p-a-1">
-        <h3>The whole purpose of education is to turn mirrors into windows.</h3>
-      </section>
-    
-  </a>
-</article>
-
-      
-      <article class="col-md-6 col-sm-6 card" style="padding: 25px;">
-        <a href="/blog/2016/08/19/Node-Package-Manager-NPM-Tutorial/"  class="hoverClass">
-    <div style="text-align: center;margin-bottom: 20px;">    
-      <img src="assets/icons/4.png" width="150" height="150">
-    </div>
-      <section class="p-a-1">
-        <h3>We all love Linux, but it's also a fact that some people might not be able to migrate.</h3>
-      </section>
-    
-  </a>
-</article>
 
       
     </div>
@@ -112,20 +76,32 @@
             <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
           </div>
           <div class="sidebar-module">
-            <h4>Archives</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
+            <h4>News Updates</h4>
+            <ol class="list-unstyled" style="margin-bottom:40px; ">
+
+              <article *ngFor="let item of latestNews let i=index" >               
+                <div class="row" *ngIf="i<latestNewsCurrentPage*5 && i>=(latestNewsCurrentPage-1)*5">                  
+                  <img src="{{item.enclosure.link}}"  class=" col-md-6 col-xs-4" style="width: 100px;height: 60px;margin: 10px 0;">
+                  <p class="col-md-6 col-xs-6" style="font-size: 10px;display: inline-block;width: 80%;">{{item.title}}</p>
+                </div>
+              </article>
+
+                <nav aria-label="...">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" [ngClass]="{'disabled': (latestNewsCurrentPage=='1')}">
+                      <a class="page-link" (click)="latestNewsClick('<')" [ngClass]="{'active': (latestNewsCurrentPage=='<')}" tabindex="-1"><</a>
+                    </li>
+                    <li class="page-item" (click)="latestNewsClick('1')" [ngClass]="{'active': (latestNewsCurrentPage=='1')}"><a class="page-link" >1</a></li>
+                    <li class="page-item" (click)="latestNewsClick('2')" [ngClass]="{'active': (latestNewsCurrentPage=='2')}"><a class="page-link" >2</a></li>
+                    <li class="page-item" (click)="latestNewsClick('3')" [ngClass]="{'active': (latestNewsCurrentPage=='3')}"><a class="page-link" >3</a></li>
+                    <li class="page-item" (click)="latestNewsClick('4')" [ngClass]="{'active': (latestNewsCurrentPage=='4')}"><a class="page-link" >4</a></li>
+                    <li class="page-item" (click)="latestNewsClick('5')" [ngClass]="{'active': (latestNewsCurrentPage=='5')}"><a class="page-link" >5</a></li>
+                    
+                    <li class="page-item"  [ngClass]="{'disabled': (latestNewsCurrentPage=='5')}">
+                      <a class="page-link" (click)="latestNewsClick('>')" [ngClass]="{'active': (latestNewsCurrentPage=='>')}" >></a>
+                    </li>
+                  </ul>
+                </nav>            
             </ol>
           </div>
           <div class="sidebar-module">

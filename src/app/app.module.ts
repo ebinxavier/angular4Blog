@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule } from '@angular/material';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { FooterComponent } from './footer/footer.component';
+import { NewsComponent } from './body/news.component';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,7 +36,8 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutComponent,
     GalleryComponent,
-    FooterComponent
+    FooterComponent,
+    NewsComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -41,7 +45,8 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,    
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
